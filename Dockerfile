@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-glance-api:queens
+FROM kolla/ubuntu-source-cinder-api:queens
