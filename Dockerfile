@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-keystone-fernet:queens
+FROM kolla/ubuntu-source-glance-api:queens
