@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-nova-compute:queens
+FROM kolla/ubuntu-source-horizon:queens
