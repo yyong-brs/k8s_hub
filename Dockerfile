@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-cinder-volume:queens
+FROM kolla/ubuntu-source-nova-api:queens
