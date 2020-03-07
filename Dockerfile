@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-keystone-ssh:queens
+FROM kolla/ubuntu-source-keystone-fernet:queens
