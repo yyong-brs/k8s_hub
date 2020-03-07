@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-nova-libvirt:queens
+FROM kolla/ubuntu-source-nova-compute:queens
