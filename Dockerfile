@@ -1,1 +1,1 @@
-FROM kolla/ubuntu-source-horizon:queens
+FROM kolla/ubuntu-source-cinder-api:queens
