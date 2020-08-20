@@ -1,1 +1,1 @@
-FROM k8s.gcr.io/metrics-server-amd64:v0.3.6
+FROM openjdk:8-jre-slim
