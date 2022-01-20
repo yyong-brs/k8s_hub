@@ -1,1 +1,1 @@
-FROM gcr.io/pixie-oss/pixie-prod/operator/bundle_index:0.0.1
+FROM gcr.io/pixie-oss/pixie-prod/operator/bundle:0.0.16
