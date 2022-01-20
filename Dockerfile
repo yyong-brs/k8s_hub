@@ -1,1 +1,1 @@
-FROM gitlab-runner/busybox:1.34.1
+FROM gcr.io/pixie-oss/pixie-prod/operator/bundle_index:0.0.1
