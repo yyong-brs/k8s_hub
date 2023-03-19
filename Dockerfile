@@ -1,1 +1,1 @@
-FROM gcr.io/pixie-oss/pixie-prod/operator/bundle:0.0.16
+FROM gcr.io/kubebuilder/kube-rbac-proxy:v0.13.0
