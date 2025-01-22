@@ -1,0 +1,1 @@
+FROM docker.all-hands.dev/all-hands-ai/runtime:0.20-nikolaik
