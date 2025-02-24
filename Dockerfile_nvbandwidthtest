@@ -1,0 +1,1 @@
+FROM yankcrime/nvbandwidthtest:cuda12.3.0
