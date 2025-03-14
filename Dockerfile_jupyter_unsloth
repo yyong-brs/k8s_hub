@@ -1,11 +1,5 @@
-FROM jupyter/minimal-notebook:x86_64-python-3.11.6
+FROM quay.io/jupyter/pytorch-notebook:x86_64-cuda12-python-3.11.10
 
-# 切换到普通用户$NB_UID（这个是在父镜像 中定义的变量，默认为jovyan）
-USER $NB_UID
-
-
-# 安装依赖（优先安装项目外的依赖）
-RUN pip install wandb
 
 # 安装本地项目（使用可编辑模式或直接安装）
 RUN pip install --force-reinstall --no-cache-dir --no-deps git+https://github.com/unslothai/unsloth.git@2025-02-v2
