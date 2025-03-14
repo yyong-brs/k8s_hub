@@ -1,0 +1,19 @@
+FROM jupyter/minimal-notebook:x86_64-python-3.11.6
+
+# 切换到 root 用户以执行系统级操作
+USER root
+
+# 创建目录并确保普通用户有权限
+RUN mkdir /unsloth && chown $NB_UID:$NB_GID /unsloth
+
+# 切换回普通用户
+USER $NB_UID
+
+# 复制项目文件到容器（注意避免覆盖镜像已有文件）
+COPY --chown=$NB_UID:$NB_GID . /unsloth
+
+# 安装依赖（优先安装项目外的依赖）
+RUN pip install wandb
+
+# 安装本地项目（使用可编辑模式或直接安装）
+RUN pip install --force-reinstall --no-cache-dir --no-deps git+https://github.com/unslothai/unsloth.git@2025-02-v2
