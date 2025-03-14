@@ -16,4 +16,4 @@ jobs:
           # 使用Dockerfile构建镜像
           docker build . --file Dockerfile_jupyter_unsloth --tag registry.cn-shanghai.aliyuncs.com/yydd/unsloth:2025-02-v2_jupyter
           # 推送镜像到镜像仓库
-          docker push registry.cn-shanghai.aliyuncs.com/yydd/jupyter_unsloth:2025-02-v2_jupyter
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/unsloth:2025-02-v2_jupyter
