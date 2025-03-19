@@ -1,4 +1,4 @@
-name: Docker Image Dify Web
+name: Docker Image Dify Plugin Daemon
 
 on:
   workflow_dispatch:
