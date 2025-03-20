@@ -14,6 +14,6 @@ jobs:
           # 登录阿里云镜像仓库
           docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
           # 使用Dockerfile构建镜像
-          docker build -f ./llama-factory/Dockerfile --build-arg INSTALL_BNB=false --build-arg INSTALL_VLLM=false --build-arg INSTALL_DEEPSPEED=false --build-arg INSTALL_FLASHATTN=false --build-arg PIP_INDEX=https://pypi.org/simple -t  registry.cn-shanghai.aliyuncs.com/yydd/llamafactory:0.9.2 .
+          docker build -f ./LLaMA-Factory/Dockerfile --build-arg INSTALL_BNB=false --build-arg INSTALL_VLLM=false --build-arg INSTALL_DEEPSPEED=false --build-arg INSTALL_FLASHATTN=false --build-arg PIP_INDEX=https://pypi.org/simple -t  registry.cn-shanghai.aliyuncs.com/yydd/llamafactory:0.9.2 .
           # 推送镜像到镜像仓库
           docker push registry.cn-shanghai.aliyuncs.com/yydd/llamafactory:0.9.2
