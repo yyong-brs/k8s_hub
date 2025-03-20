@@ -37,8 +37,6 @@ RUN if [ -n "$HTTP_PROXY" ]; then \
     fi
 
 
-# Install the requirements
-COPY requirements.txt /app
 RUN pip config set global.index-url "$PIP_INDEX" && \
     pip config set global.extra-index-url "$PIP_INDEX" && \
     python -m pip install --upgrade pip && \
