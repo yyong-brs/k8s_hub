@@ -21,6 +21,11 @@ ARG INSTALL_EETQ=false
 ARG PIP_INDEX=https://pypi.org/simple
 ARG HTTP_PROXY=
 
+
+# 克隆指定tag的代码库
+RUN git clone --depth 1 --branch ${PROJECT_TAG} ${PROJECT_REPO} /app \
+    && cd /app \
+    && rm -rf .git  # 清理.git目录减小镜像体积
 # Set the working directory
 WORKDIR /app
 
@@ -30,11 +35,6 @@ RUN if [ -n "$HTTP_PROXY" ]; then \
         export http_proxy=$HTTP_PROXY; \
         export https_proxy=$HTTP_PROXY; \
     fi
-
-# 克隆指定tag的代码库
-RUN git clone --depth 1 --branch ${PROJECT_TAG} ${PROJECT_REPO} /app \
-    && cd /app \
-    && rm -rf .git  # 清理.git目录减小镜像体积
 
 
 # Install the requirements
