@@ -17,4 +17,4 @@ jobs:
           docker pull ghcr.io/openclaw/openclaw:2026.3.23-2
           docker tag ghcr.io/openclaw/openclaw:2026.3.23-2  registry.cn-shanghai.aliyuncs.com/yydd/openclaw:2026.3.23-2
           # 推送镜像到镜像仓库
-          docker push registry.cn-shanghai.aliyuncs.com/yydd/openclaw:2026.3.22
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/openclaw:2026.3.23-2
