@@ -1,0 +1,20 @@
+name: Docker Hermes-Agent
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+          # 使用Dockerfile构建镜像
+          docker pull nousresearch/hermes-agent:latest
+          docker tag nousresearch/hermes-agent:latest  registry.cn-shanghai.aliyuncs.com/yydd/hermes-agent:latest-2026.4.13
+          # 推送镜像到镜像仓库
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/hermes-agent:latest-2026.4.13
