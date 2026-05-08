@@ -1,0 +1,26 @@
+name: Docker Penpot
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+          # 使用Dockerfile构建镜像
+          docker pull penpotapp/backend:2.14.4
+          docker pull penpotapp/exporter:2.14.4
+          docker pull penpotapp/frontend:2.14.4
+          docker tag penpotapp/backend:2.14.4  registry.cn-shanghai.aliyuncs.com/yydd/penpot:penpotapp-backend-2.14.4
+          docker tag penpotapp/exporter:2.14.4  registry.cn-shanghai.aliyuncs.com/yydd/penpot:penpotapp-exporter-2.14.4
+          docker tag penpotapp/frontend:2.14.4  registry.cn-shanghai.aliyuncs.com/yydd/penpot:penpotapp-frontend-2.14.4
+          # 推送镜像到镜像仓库
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/penpot:penpotapp-backend-2.14.4
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/penpot:penpotapp-exporter-2.14.4
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/penpot:penpotapp-frontend-2.14.4
