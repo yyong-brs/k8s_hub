@@ -1,0 +1,30 @@
+name: Docker Tekton
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+          # 使用Dockerfile构建镜像
+          docker pull ghcr.io/tektoncd/pipeline/controller-10a3e32792f33651396d02b6855a6e36:v1.13.0@sha256:f16f27c4cae8013e4d0f51b3a208d9367dd9a383d7ec9dea623068ece9180838
+          docker pull ghcr.io/tektoncd/pipeline/events-a9042f7efb0cbade2a868a1ee5ddd52c:v1.13.0@sha256:3f691419fdb79b8824e4184b4e1d41200d950b543b134b5a5c7fdf46234c9114
+          docker pull ghcr.io/tektoncd/pipeline/resolvers-ff86b24f130c42b88983d3c13993056d:v1.13.0@sha256:6baeb2aa990387ed4afed4fa095845ed137b35c2471dffdc95ea8d32142775fa
+          docker pull ghcr.io/tektoncd/pipeline/webhook-d4749e605405422fd87700164e31b2d1:v1.13.0@sha256:4eb2519b2272a7b049bb721e1ebe00f2cb92d22b8c7fdee369924d690439684a
+          
+          docker tag ghcr.io/tektoncd/pipeline/controller-10a3e32792f33651396d02b6855a6e36:v1.13.0@sha256:f16f27c4cae8013e4d0f51b3a208d9367dd9a383d7ec9dea623068ece9180838 registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-controller-v1.13.0
+          docker tag ghcr.io/tektoncd/pipeline/events-a9042f7efb0cbade2a868a1ee5ddd52c:v1.13.0@sha256:3f691419fdb79b8824e4184b4e1d41200d950b543b134b5a5c7fdf46234c9114 registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-events-v1.13.0
+          docker tag ghcr.io/tektoncd/pipeline/resolvers-ff86b24f130c42b88983d3c13993056d:v1.13.0@sha256:6baeb2aa990387ed4afed4fa095845ed137b35c2471dffdc95ea8d32142775fa registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-resolvers-v1.13.0
+          docker tag ghcr.io/tektoncd/pipeline/webhook-d4749e605405422fd87700164e31b2d1:v1.13.0@sha256:4eb2519b2272a7b049bb721e1ebe00f2cb92d22b8c7fdee369924d690439684a registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-webhook-v1.13.0
+          # 推送镜像到镜像仓库
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-controller-v1.13.0
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-events-v1.13.0
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-resolvers-v1.13.0
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-webhook-v1.13.0
