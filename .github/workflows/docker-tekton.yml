@@ -35,18 +35,19 @@ jobs:
           docker pull ghcr.io/tektoncd/pipeline/sidecarlogresults-7501c6a20d741631510a448b48ab098f:v1.13.0@sha256:f23ee3e2686bf7af0322b7f47363a9e5e15e3faf36efb83f3a82a7769be37522
           docker pull ghcr.io/tektoncd/pipeline/workingdirinit-0c558922ec6a1b739e550e349f2d5fc1:v1.13.0@sha256:4e6e3896c4c46c5f4de098e1dd9c3ad52687091b80db015b1cd7adf031cd3c65
           docker pull cgr.dev/chainguard/busybox@sha256:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791
-          docker pull mcr.microsoft.com/powershell:nanoserver@sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6
+          ## power shell 的用不到应该，而且pull linx 下报错
+          # docker pull mcr.microsoft.com/powershell:nanoserver@sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6
 
           docker tag ghcr.io/tektoncd/pipeline/entrypoint-bff0a22da108bc2f16c818c97641a296:v1.13.0@sha256:c12dc318440a2ab96d83daeb5e70a223e59d87a0c3f1f391b1ed1e4ecb092602 registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-entrypoint-v1.13.0
           docker tag ghcr.io/tektoncd/pipeline/nop-8eac7c133edad5df719dc37b36b62482:v1.13.0@sha256:15c6f4a42b9253beb46682fbf0771519b241af13c4f916cfc400b827a7bd8dda registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-nop-v1.13.0
           docker tag ghcr.io/tektoncd/pipeline/sidecarlogresults-7501c6a20d741631510a448b48ab098f:v1.13.0@sha256:f23ee3e2686bf7af0322b7f47363a9e5e15e3faf36efb83f3a82a7769be37522 registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-sidecarlogresults-v1.13.0
           docker tag ghcr.io/tektoncd/pipeline/workingdirinit-0c558922ec6a1b739e550e349f2d5fc1:v1.13.0@sha256:4e6e3896c4c46c5f4de098e1dd9c3ad52687091b80db015b1cd7adf031cd3c65 registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-workingdirinit-v1.13.0
           docker tag cgr.dev/chainguard/busybox@sha256:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791 registry.cn-shanghai.aliyuncs.com/yydd/busybox:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791
-          docker tag mcr.microsoft.com/powershell:nanoserver@sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6 registry.cn-shanghai.aliyuncs.com/yydd/tekton:powershell-nanoserver
+          # docker tag mcr.microsoft.com/powershell:nanoserver@sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6 registry.cn-shanghai.aliyuncs.com/yydd/tekton:powershell-nanoserver
 
           docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-entrypoint-v1.13.0
           docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-nop-v1.13.0
           docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-sidecarlogresults-v1.13.0
           docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:pipeline-workingdirinit-v1.13.0
           docker push registry.cn-shanghai.aliyuncs.com/yydd/busybox:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791
-          docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:powershell-nanoserver
+          # docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:powershell-nanoserver
