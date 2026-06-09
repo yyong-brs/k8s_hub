@@ -13,6 +13,11 @@ jobs:
           docker version
           # 登录阿里云镜像仓库
           docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+          
+          ## tasks - buildah-build-push 镜像
+          docker pull quay.io/buildah/stable:v1.43.1
+          docker tag quay.io/buildah/stable:v1.43.1 registry.cn-shanghai.aliyuncs.com/yydd/tekton:buildah-stable-v1.43.1
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/tekton:buildah-stable-v1.43.1
 
           ## tasks - git-clone 镜像
           docker pull ghcr.io/tektoncd-catalog/git-clone:v1.1.0
