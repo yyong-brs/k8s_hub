@@ -15,7 +15,17 @@ jobs:
           docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
           # 使用Dockerfile构建镜像
           docker pull ghcr.io/berriai/litellm:v1.84.9
+          docker pull ghcr.io/berriai/litellm-database:1.90.0
           
           docker tag ghcr.io/berriai/litellm:v1.84.9  registry.cn-shanghai.aliyuncs.com/yydd/litellm:v1.84.9
+          docker tag ghcr.io/berriai/litellm-database:1.90.0  registry.cn-shanghai.aliyuncs.com/yydd/litellm:database-1.90.0
           # 推送镜像到镜像仓库
           docker push registry.cn-shanghai.aliyuncs.com/yydd/litellm:v1.84.9
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/litellm:database-1.90.0
+
+          docker pull docker.io/bitnami/postgresql:16.2.0-debian-12-r6
+          docker tag docker.io/bitnami/postgresql:16.2.0-debian-12-r6 registry.cn-shanghai.aliyuncs.com/yydd/bitnami:postgresql-16.2.0-debian-12-r6
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/bitnami:postgresql-16.2.0-debian-12-r6
+          docker pull docker.io/bitnami/redis:7.2.4-debian-12-r9
+          docker tag docker.io/bitnami/redis:7.2.4-debian-12-r9 registry.cn-shanghai.aliyuncs.com/yydd/bitnami:redis-7.2.4-debian-12-r9
+          docker push registry.cn-shanghai.aliyuncs.com/yydd/bitnami:redis-7.2.4-debian-12-r9
