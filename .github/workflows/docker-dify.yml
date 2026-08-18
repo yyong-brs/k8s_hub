@@ -1,0 +1,64 @@
+name: Docker Image dify
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+          REPO=registry.cn-shanghai.aliyuncs.com/yydd/dify
+          
+          docker pull langgenius/dify-api:1.16.1
+          docker tag  langgenius/dify-api:1.16.1 $REPO:dify-api-1.16.1
+          docker push $REPO:dify-api-1.16.1
+          
+          docker pull langgenius/dify-web:1.16.1
+          docker tag  langgenius/dify-web:1.16.1 $REPO:dify-web-1.16.1
+          docker push $REPO:dify-web-1.16.1
+          
+          docker pull langgenius/dify-sandbox:0.2.15
+          docker tag  langgenius/dify-sandbox:0.2.15 $REPO:dify-sandbox-0.2.15
+          docker push $REPO:dify-sandbox-0.2.15
+          
+          docker pull langgenius/dify-agent-local-sandbox:1.16.1
+          docker tag  langgenius/dify-agent-local-sandbox:1.16.1 $REPO:dify-agent-local-sandbox-1.16.1
+          docker push $REPO:dify-agent-local-sandbox-1.16.1
+          
+          docker pull langgenius/dify-plugin-daemon:0.6.10-local
+          docker tag  langgenius/dify-plugin-daemon:0.6.10-local $REPO:dify-plugin-daemon-0.6.10-local
+          docker push $REPO:dify-plugin-daemon-0.6.10-local
+          
+          docker pull langgenius/dify-agent-backend:1.16.1
+          docker tag  langgenius/dify-agent-backend:1.16.1 $REPO:dify-agent-backend-1.16.1
+          docker push $REPO:dify-agent-backend-1.16.1
+          
+          docker pull postgres:15-alpine
+          docker tag  postgres:15-alpine $REPO:postgres-15-alpine
+          docker push $REPO:postgres-15-alpine
+          
+          docker pull redis:6-alpine
+          docker tag  redis:6-alpine $REPO:redis-6-alpine
+          docker push $REPO:redis-6-alpine
+          
+          docker pull nginx:latest
+          docker tag  nginx:latest $REPO:nginx-latest
+          docker push $REPO:nginx-latest
+          
+          docker pull busybox:latest
+          docker tag  busybox:latest $REPO:busybox-latest
+          docker push $REPO:busybox-latest
+          
+          docker pull ubuntu/squid:latest
+          docker tag  ubuntu/squid:latest $REPO:ubuntu-squid-latest
+          docker push $REPO:ubuntu-squid-latest
+
+docker pull semitechnologies/weaviate:1.27.0
+docker tag  semitechnologies/weaviate:1.27.0 $REPO:weaviate-1.27.0
+docker push $REPO:weaviate-1.27.0
