@@ -59,6 +59,6 @@ jobs:
           docker tag  ubuntu/squid:latest $REPO:ubuntu-squid-latest
           docker push $REPO:ubuntu-squid-latest
 
-docker pull semitechnologies/weaviate:1.27.0
-docker tag  semitechnologies/weaviate:1.27.0 $REPO:weaviate-1.27.0
-docker push $REPO:weaviate-1.27.0
+          docker pull semitechnologies/weaviate:1.27.0
+          docker tag  semitechnologies/weaviate:1.27.0 $REPO:weaviate-1.27.0
+          docker push $REPO:weaviate-1.27.0
